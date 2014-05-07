@@ -1,0 +1,28 @@
+<grammar version="1.0" xml:lang="fr-FR" mode="voice" root="ruleInfoTraffic" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">
+  <rule id="ruleInfoTraffic" scope="public">
+	<example>Sarah qu'elle est l'état du traffic ?</example>
+    <tag>out.action=new Object(); </tag>
+    
+    <item weight="2">Sarah</item>
+    
+    <one-of>      
+	  <item>qu'elle est l'état du traffic</item>
+	  <item>qu'elle est le traffic</item>
+    </one-of>
+
+
+    <item repeat="0-1">
+      <item>des</item>
+      <one-of>
+        <item>métro<tag>out.action.type="metro";</tag></item>
+		<item>R.E.R<tag>out.action.type="rer";</tag></item>
+		<item>tram<tag>out.action.type="tram";</tag></item>
+        <item>bus<tag>out.action.type="bus";</tag></item>
+		<item>transilien<tag>out.action.type="sncf";</tag></item>
+		<item>train<tag>out.action.type="sncf";</tag></item>
+      </one-of>
+    </item>
+    
+    <tag>out.action._attributes.uri="http://127.0.0.1:8080/sarah/phantom/infotraffic";</tag>
+  </rule> 
+</grammar>
